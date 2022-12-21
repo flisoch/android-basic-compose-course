@@ -1,34 +1,25 @@
 package com.example.gridlist
 
-import android.graphics.drawable.shapes.RoundRectShape
-import android.graphics.drawable.shapes.Shape
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.List
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.gridlist.data.Datasource
 import com.example.gridlist.model.Topic
 import com.example.gridlist.ui.theme.GridListTheme
-import com.example.gridlist.ui.theme.Shapes
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,65 +31,68 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    TopicsGrid(Datasource().loadTopics())
+                    TopicsGrid(topics = Datasource().loadTopics())
                 }
             }
         }
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun TopicsGrid(topics: List<Topic> = Datasource().loadTopics()) {
-    LazyVerticalGrid(cells = GridCells.Fixed(2), content = {
-        items(topics.size) { index ->
-            TopicCard(topic = topics[index])
+fun TopicsGrid(modifier: Modifier = Modifier, topics: List<Topic> = Datasource().loadTopics()) {
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = modifier.padding(8.dp)
+    ) {
+        items(topics) { topic ->
+            TopicCard(topic)
         }
     }
-    )
 }
 
 @Composable
-fun TopicCard(topic: Topic) {
+fun TopicCard(topic: Topic, modifier: Modifier = Modifier) {
     Card(
-        shape = RoundedCornerShape(15.dp)
+        elevation = 4.dp
     ) {
-        Row() {
+        Row {
             Image(
                 painter = painterResource(id = topic.imageResourceId),
                 contentDescription = stringResource(id = topic.nameResourceId),
                 contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .weight(1f)
+                modifier = modifier
+                    .size(width = 68.dp, height = 68.dp)
+                    .aspectRatio(1f),
             )
-            Box(
-                modifier = Modifier
-                    .weight(1.6f)
-            ) {
-                Column(
-                    modifier = Modifier
-                        .padding(top = 30.dp, end = 30.dp, bottom = 15.dp, start = 30.dp)
-                ) {
+            Box {
+                Column {
                     Text(
                         text = stringResource(id = topic.nameResourceId),
-                        fontSize = 30.sp,
+                        style = MaterialTheme.typography.body2,
                         modifier = Modifier
-                            .padding(bottom = 15.dp)
+                            .padding(
+                                start = 16.dp,
+                                top = 16.dp,
+                                end = 16.dp,
+                                bottom = 8.dp
+                            )
                     )
                     Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .align(Alignment.Start)
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         Icon(
-                            imageVector = Icons.Default.List,
+                            painter = painterResource(id = R.drawable.ic_grain),
                             contentDescription = null,
                             modifier = Modifier
-                                .padding(top = 2.dp, bottom = 2.dp, end = 10.dp)
+                                .padding(start = 16.dp)
+                                .size(12.dp)
                         )
                         Text(
                             text = stringResource(id = topic.coursesCountResourceId),
-                            fontSize = 28.sp
+                            style = MaterialTheme.typography.caption,
+                            modifier = Modifier.padding(start = 8.dp)
                         )
                     }
                 }
@@ -111,5 +105,15 @@ fun TopicCard(topic: Topic) {
 @Preview
 @Composable
 fun TopicCardPreview() {
-    TopicCard(Topic(R.string.name_photography, R.string.count_photography, R.drawable.photography))
+    GridListTheme {
+        val topic =
+            Topic(R.string.name_photography, R.string.count_photography, R.drawable.photography)
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            TopicCard(topic = topic)
+        }
+    }
 }
