@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="title_1">Green Grass Near Trees</string>
+    <string name="title_2">Person Sitting in Front of Brown and Black House</string>
+    <string name="title_3">Silhouette Of A Person On A Swing</string>
+    <string name="title_4">Close Up Photo of Jellyfish Underwater</string>
+    <string name="title_5">White Snow Field Photography</string>
+    <string name="title_6">Lightning Over Body of Water</string>
+    <string name="author_1">Luis Dalvan</string>
+    <string name="author_2">Felix Mittermeier</string>
+    <string name="author_3">Asad Photo Maldives</string>
+    <string name="author_4">Guillaume Meurice</string>
+    <string name="author_5">julie aagaard</string>
+    <string name="author_6">Raychel Sanner</string>
+    <string name="button_text_previous">Previous</string>
+    <string name="button_text_next">Next</string>
+</resources>

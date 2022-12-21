@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Grid list</string>
+    <string name="name_architecture">architecture</string>
+    <string name="name_business">business</string>
+    <string name="name_design">design</string>
+    <string name="name_film">film</string>
+    <string name="name_drawing">drawing</string>
+    <string name="name_music">music</string>
+    <string name="name_photography">photography</string>
+    <string name="name_crafts">crafts</string>
+    <string name="name_culinary">culinary</string>
+    <string name="name_fashion">fashion</string>
+    <string name="name_gaming">gaming</string>
+    <string name="name_lifestyle">lifestyle</string>
+    <string name="name_painting">painting</string>
+    <string name="name_tech">tech</string>
+    <string name="count_architecture">58</string>
+    <string name="count_business">78</string>
+    <string name="count_design">423</string>
+    <string name="count_film">165</string>
+    <string name="count_drawing">326</string>
+    <string name="count_music">212</string>
+    <string name="count_photography">321</string>
+    <string name="count_crafts">121</string>
+    <string name="count_culinary">118</string>
+    <string name="count_fashion">92</string>
+    <string name="count_gaming">164</string>
+    <string name="count_lifestyle">305</string>
+    <string name="count_painting">172</string>
+    <string name="count_tech">118</string>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Business Card app</string>
+    <string name="description_android_logo">Android Logo</string>
+    <string name="contact_number">+7 (939) 392 32 60</string>
+    <string name="contact_share">\@flisoch</string>
+    <string name="contact_email">flisochcs@gmail.com</string>
+    <string name="contact_name">Daler Yuldashev</string>
+    <string name="contact_bio">C++ Developer</string>
+</resources>
